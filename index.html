@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Beacon Local | Websites for Small Businesses</title>
+  <meta name="description" content="Beacon Local creates clean, professional websites for small businesses that want to look credible, get found online, and grow." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #083D4A;
+      --navy-2: #0B4453;
+      --gold: #D9A441;
+      --cream: #F8F7F2;
+      --sand: #E6E3DA;
+      --slate: #4F5963;
+      --white: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--navy);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(248, 247, 242, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(8, 61, 74, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+    }
+
+    .brand img {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+    }
+
+    .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 0.92rem;
+      color: var(--slate);
+    }
+
+    nav a:hover {
+      color: var(--navy);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      border: 1px solid var(--gold);
+      box-shadow: 0 10px 24px rgba(217, 164, 65, 0.25);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(217, 164, 65, 0.32);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--navy);
+      border-color: rgba(8, 61, 74, 0.18);
+      box-shadow: none;
+    }
+
+    .hero {
+      padding: 92px 0 84px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 0.98;
+      margin: 0;
+      color: var(--navy);
+    }
+
+    h1 {
+      font-size: clamp(3.7rem, 8vw, 7.2rem);
+      max-width: 780px;
+      letter-spacing: -0.055em;
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin: 28px 0 0;
+      font-size: clamp(1.05rem, 1.5vw, 1.24rem);
+      color: var(--slate);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .trust-row {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+      color: var(--slate);
+      font-size: 0.92rem;
+    }
+
+    .trust-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .trust-row span::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--gold);
+    }
+
+    .hero-card {
+      position: relative;
+      background: var(--white);
+      border: 1px solid rgba(8, 61, 74, 0.08);
+      border-radius: 34px;
+      padding: 46px;
+      min-height: 420px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 30px 80px rgba(8, 61, 74, 0.11);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 28px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(217,164,65,0.14), transparent 42%),
+        linear-gradient(180deg, rgba(248,247,242,0.85), rgba(255,255,255,0.25));
+      z-index: 0;
+    }
+
+    .hero-logo {
+      position: relative;
+      z-index: 1;
+      width: min(285px, 82%);
+      filter: drop-shadow(0 20px 28px rgba(8, 61, 74, 0.16));
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .intro {
+      background: var(--white);
+      border-top: 1px solid rgba(8, 61, 74, 0.06);
+      border-bottom: 1px solid rgba(8, 61, 74, 0.06);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    h2 {
+      font-size: clamp(2.4rem, 4vw, 4.4rem);
+      letter-spacing: -0.035em;
+    }
+
+    .lead {
+      color: var(--slate);
+      font-size: 1.08rem;
+      margin: 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid rgba(8, 61, 74, 0.08);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 0 18px 45px rgba(8, 61, 74, 0.06);
+    }
+
+    .card .number {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      display: inline-grid;
+      place-items: center;
+      background: rgba(217, 164, 65, 0.16);
+      color: var(--navy);
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    h3 {
+      font-size: 1.7rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--slate);
+      font-size: 0.96rem;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 34px;
+    }
+
+    .section-head p {
+      max-width: 520px;
+      color: var(--slate);
+      margin: 0;
+    }
+
+    .process {
+      background: var(--navy);
+      color: var(--cream);
+    }
+
+    .process h2,
+    .process h3 {
+      color: var(--cream);
+    }
+
+    .process .section-head p,
+    .process .card p {
+      color: rgba(248,247,242,0.74);
+    }
+
+    .process .card {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255,255,255,0.10);
+      box-shadow: none;
+    }
+
+    .portfolio-preview {
+      background: var(--white);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project {
+      border-radius: 28px;
+      min-height: 250px;
+      padding: 26px;
+      background: linear-gradient(135deg, rgba(8,61,74,0.08), rgba(217,164,65,0.14));
+      border: 1px solid rgba(8, 61, 74, 0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+    }
+
+    .project small {
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .project p {
+      color: var(--slate);
+      margin: 10px 0 0;
+    }
+
+    .cta {
+      padding: 88px 0;
+    }
+
+    .cta-box {
+      background: var(--navy);
+      color: var(--cream);
+      border-radius: 36px;
+      padding: clamp(36px, 6vw, 72px);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+      box-shadow: 0 30px 90px rgba(8, 61, 74, 0.18);
+    }
+
+    .cta-box h2 {
+      color: var(--cream);
+    }
+
+    .cta-box p {
+      color: rgba(248,247,242,0.76);
+      margin: 20px 0 0;
+      max-width: 620px;
+    }
+
+    footer {
+      padding: 32px 0;
+      color: var(--slate);
+      border-top: 1px solid rgba(8, 61, 74, 0.08);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 58px;
+      }
+
+      .hero-grid,
+      .split,
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        min-height: 320px;
+        padding: 28px;
+      }
+
+      .cards,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 16px;
+      }
+
+      h1 {
+        font-size: clamp(3.25rem, 16vw, 5rem);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Beacon Local home">
+        <img src="assets/beacon-local-logo.png" alt="Beacon Local lighthouse logo">
+        <span class="brand-name">Beacon Local</span>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a class="button" href="contact.html">Get a Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Websites for small businesses</div>
+          <h1 id="hero-title">Helping small businesses be seen.</h1>
+          <p>
+            Beacon Local creates clean, professional websites that help small businesses build credibility,
+            show up with confidence, and make it easier for customers to take the next step.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button" href="contact.html">Get a Quote</a>
+            <a class="button secondary" href="services.html">View Services</a>
+          </div>
+
+          <div class="trust-row" aria-label="Service highlights">
+            <span>Mobile-friendly</span>
+            <span>Fast loading</span>
+            <span>Basic SEO setup</span>
+            <span>Built for small businesses</span>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-hidden="true">
+          <img class="hero-logo" src="assets/beacon-local-logo.png" alt="">
+        </div>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="container split">
+        <div>
+          <div class="eyebrow">Why it matters</div>
+          <h2>Your website is often your first impression.</h2>
+        </div>
+
+        <p class="lead">
+          When customers search for your business, your website should make you look established, trustworthy,
+          and easy to contact. Beacon Local helps small businesses launch polished websites without agency
+          complexity or overwhelming tech decisions.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="services-preview-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">What we do</div>
+            <h2 id="services-preview-title">Simple website support for growing businesses.</h2>
+          </div>
+          <p>
+            Start with a focused website now, then grow into additional pages, updates, and support as your business needs more.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="number">01</div>
+            <h3>Website Design</h3>
+            <p>Professional websites designed to showcase your business clearly and make a strong first impression.</p>
+          </article>
+
+          <article class="card">
+            <div class="number">02</div>
+            <h3>Website Refreshes</h3>
+            <p>Modernize an outdated website with cleaner layouts, mobile responsiveness, and clearer calls to action.</p>
+          </article>
+
+          <article class="card">
+            <div class="number">03</div>
+            <h3>Website Care</h3>
+            <p>Ongoing support for business owners who want help with edits, updates, and small website improvements.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Process</div>
+            <h2 id="process-title">A clear path from idea to launch.</h2>
+          </div>
+          <p>
+            The process is intentionally simple, so you know what is happening and what is needed at each step.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="number">1</div>
+            <h3>Discovery</h3>
+            <p>Tell us about your business, goals, services, and what your website needs to accomplish.</p>
+          </article>
+
+          <article class="card">
+            <div class="number">2</div>
+            <h3>Design</h3>
+            <p>We organize your content and create a clean, modern website tailored to your business.</p>
+          </article>
+
+          <article class="card">
+            <div class="number">3</div>
+            <h3>Review</h3>
+            <p>You review the site, request refinements, and approve the final version before launch.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio-preview" aria-labelledby="portfolio-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Portfolio</div>
+            <h2 id="portfolio-title">Concept projects coming soon.</h2>
+          </div>
+          <p>
+            As Beacon Local grows, this space will feature client work and concept designs for service-based businesses.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project">
+            <small>Concept</small>
+            <h3>Service Business</h3>
+            <p>A clean website concept for contractors, cleaners, landscapers, and home service providers.</p>
+          </article>
+
+          <article class="project">
+            <small>Concept</small>
+            <h3>Creative Business</h3>
+            <p>A polished portfolio-style concept for photographers, florists, designers, and event vendors.</p>
+          </article>
+
+          <article class="project">
+            <small>Concept</small>
+            <h3>Professional Services</h3>
+            <p>A simple credibility-focused concept for consultants, coaches, and local professionals.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2 id="cta-title">Ready for a website that feels clear, polished, and easy to share?</h2>
+            <p>
+              Whether you're starting from scratch or refreshing an outdated site, Beacon Local can help you create a stronger online presence.
+            </p>
+          </div>
+          <a class="button" href="contact.html">Request a Quote</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Beacon Local. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
