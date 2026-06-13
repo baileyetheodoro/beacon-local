@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tell Us About Your Business | Beacon Local</title>
+  <meta
+    name="description"
+    content="Tell Beacon Local about your business, website goals, content, and preferred timeline."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --navy: #083d4a;
+      --navy-light: #0d5262;
+      --gold: #d9a441;
+      --cream: #f8f7f2;
+      --sand: #e6e3da;
+      --slate: #4f5963;
+      --white: #ffffff;
+      --error: #a13b31;
+      --shadow: 0 24px 70px rgba(8, 61, 74, 0.11);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--navy);
+      font-family: "Inter", sans-serif;
+      line-height: 1.6;
+    }
+    body.menu-open { overflow: hidden; }
+    body.dialog-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button, input, select, textarea, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(8, 61, 74, 0.08);
+      background: rgba(248, 247, 242, 0.95);
+      backdrop-filter: blur(14px);
+    }
+    .nav-bar {
+      display: flex;
+      min-height: 82px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+    .brand-name {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      color: var(--slate);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .desktop-nav a:hover { color: var(--navy); }
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(8, 61, 74, 0.16);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--navy);
+      cursor: pointer;
+    }
+    .menu-icon, .menu-icon::before, .menu-icon::after {
+      display: block;
+      width: 20px;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      transition: transform 180ms ease;
+    }
+    .menu-icon { position: relative; }
+    .menu-icon::before, .menu-icon::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+    .menu-icon::before { top: -6px; }
+    .menu-icon::after { top: 6px; }
+    .menu-toggle[aria-expanded="true"] .menu-icon { background: transparent; }
+    .menu-toggle[aria-expanded="true"] .menu-icon::before {
+      transform: translateY(6px) rotate(45deg);
+    }
+    .menu-toggle[aria-expanded="true"] .menu-icon::after {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+    .mobile-nav { display: none; }
+    .eyebrow {
+      margin-bottom: 16px;
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+    h1 { font-size: clamp(3.8rem, 7vw, 6.4rem); }
+    h2 { font-size: clamp(2rem, 3.5vw, 3.2rem); }
+    h3 { font-size: 1.7rem; }
+    p { color: var(--slate); }
+    .page-hero {
+      padding: clamp(66px, 9vw, 110px) 0 48px;
+      text-align: center;
+    }
+    .page-hero h1 {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+    .page-hero p {
+      max-width: 650px;
+      margin: 23px auto 0;
+      font-size: 1.08rem;
+    }
+    .form-section {
+      padding: 0 0 clamp(82px, 11vw, 130px);
+    }
+
+    .process-section {
+      padding: 0 0 34px;
+    }
+
+    .process-panel {
+      padding: clamp(30px, 5vw, 48px);
+      border-radius: 26px;
+      background: var(--navy);
+      color: var(--cream);
+    }
+
+    .process-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    .process-head h2 {
+      color: var(--cream);
+    }
+
+    .process-head p {
+      max-width: 420px;
+      margin: 0;
+      color: rgba(248, 247, 242, 0.72);
+    }
+
+    .next-steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: steps;
+    }
+
+    .next-steps li {
+      position: relative;
+      min-width: 0;
+      padding: 48px 24px 0 0;
+      color: rgba(248, 247, 242, 0.82);
+      font-size: 0.86rem;
+      counter-increment: steps;
+    }
+
+    .next-steps li:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 16px;
+      right: 12px;
+      left: 42px;
+      height: 1px;
+      background: rgba(248, 247, 242, 0.18);
+    }
+
+    .next-steps li::before {
+      content: counter(steps);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      display: grid;
+      width: 32px;
+      height: 32px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .form-layout {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .intake-form {
+      padding: clamp(28px, 5vw, 54px);
+      border: 1px solid rgba(8, 61, 74, 0.09);
+      border-radius: 28px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .form-plan {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 38px;
+      padding: 17px 19px;
+      border: 1px solid rgba(217, 164, 65, 0.38);
+      border-radius: 12px;
+      background: rgba(217, 164, 65, 0.1);
+    }
+
+    .form-plan span {
+      color: var(--slate);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .form-plan strong {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.55rem;
+      line-height: 1.1;
+    }
+    .form-block + .form-block {
+      margin-top: 42px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(8, 61, 74, 0.1);
+    }
+    .block-heading {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 25px;
+    }
+    .step {
+      display: grid;
+      width: 32px;
+      height: 32px;
+      flex: 0 0 auto;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+    .field.full { grid-column: 1 / -1; }
+    label, legend {
+      color: var(--navy);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+    .required { color: var(--error); }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid rgba(8, 61, 74, 0.17);
+      border-radius: 11px;
+      background: var(--cream);
+      color: var(--navy);
+    }
+    input, select {
+      min-height: 52px;
+      padding: 11px 14px;
+    }
+    textarea {
+      min-height: 130px;
+      padding: 13px 14px;
+      resize: vertical;
+    }
+    input::placeholder, textarea::placeholder {
+      color: rgba(79, 89, 99, 0.68);
+    }
+    input:hover, select:hover, textarea:hover {
+      border-color: rgba(8, 61, 74, 0.34);
+    }
+    .field-hint {
+      margin: -1px 0 0;
+      color: var(--slate);
+      font-size: 0.78rem;
+    }
+    fieldset {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 11px;
+      margin-top: 11px;
+    }
+    .choice {
+      position: relative;
+    }
+    .choice input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+    .choice label {
+      display: flex;
+      min-height: 50px;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 13px;
+      border: 1px solid rgba(8, 61, 74, 0.14);
+      border-radius: 11px;
+      background: var(--cream);
+      color: var(--slate);
+      cursor: pointer;
+    }
+    .choice label::before {
+      content: "";
+      width: 17px;
+      height: 17px;
+      flex: 0 0 auto;
+      border: 2px solid rgba(8, 61, 74, 0.38);
+      border-radius: 50%;
+      background: var(--white);
+      box-shadow: inset 0 0 0 4px var(--white);
+    }
+
+    .choice input:checked + label {
+      color: var(--navy);
+    }
+
+    .choice input:checked + label::before {
+      border-color: var(--gold);
+      background: var(--gold);
+    }
+
+    .choice input:focus-visible + label {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .conditional-field {
+      display: none;
+      margin-top: 12px;
+    }
+
+    .conditional-field.is-visible {
+      display: grid;
+    }
+
+    .form-actions {
+      margin-top: 36px;
+    }
+    .button {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 23px;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 180ms ease, background-color 180ms ease;
+    }
+    .button:hover {
+      background: #e3ad42;
+      transform: translateY(-2px);
+    }
+    .privacy {
+      margin: 14px 0 0;
+      font-size: 0.78rem;
+    }
+    .confirmation {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      place-items: center;
+      padding: 24px;
+      background: rgba(8, 61, 74, 0.72);
+      backdrop-filter: blur(8px);
+    }
+
+    .confirmation.is-open {
+      display: grid;
+    }
+
+    .confirmation-card {
+      position: relative;
+      width: min(540px, 100%);
+      padding: clamp(34px, 6vw, 54px);
+      border: 1px solid rgba(217, 164, 65, 0.38);
+      border-radius: 26px;
+      background: var(--cream);
+      box-shadow: 0 30px 90px rgba(8, 61, 74, 0.34);
+      text-align: center;
+    }
+
+    .confirmation-icon {
+      display: grid;
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 22px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+
+    .confirmation-card h2 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+    }
+
+    .confirmation-card p {
+      max-width: 420px;
+      margin: 17px auto 0;
+    }
+
+    .confirmation-card .button {
+      margin-top: 27px;
+    }
+
+    .demo-note {
+      padding-top: 18px;
+      border-top: 1px solid rgba(8, 61, 74, 0.1);
+      font-size: 0.74rem;
+    }
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid rgba(8, 61, 74, 0.08);
+      color: var(--slate);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 980px) {
+      .desktop-nav { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .mobile-nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        z-index: 40;
+        height: calc(100dvh - 82px);
+        overflow-y: auto;
+        padding: 22px 24px 40px;
+        background: var(--navy);
+        color: var(--cream);
+      }
+      .mobile-nav.is-open { display: block; }
+      .search-field {
+        width: 100%;
+        min-height: 50px;
+        padding: 12px 16px;
+        border: 1px solid rgba(248, 247, 242, 0.24);
+        border-radius: 12px;
+        background: var(--white);
+        color: var(--navy);
+      }
+      .mobile-page-links {
+        display: flex;
+        flex-direction: column;
+        margin-top: 14px;
+      }
+      .mobile-page-links a {
+        padding: 17px 4px;
+        border-bottom: 1px solid rgba(248, 247, 242, 0.15);
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.9rem;
+        font-weight: 600;
+      }
+      .mobile-page-links a[hidden] { display: none; }
+      .search-empty {
+        display: none;
+        color: rgba(248, 247, 242, 0.72);
+      }
+      .search-empty.is-visible { display: block; }
+      .process-head {
+        display: block;
+      }
+
+      .process-head p {
+        margin-top: 16px;
+      }
+
+      .next-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 18px;
+      }
+
+      .next-steps li:not(:last-child)::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container { width: min(100% - 30px, 1120px); }
+      .nav-bar { min-height: 74px; }
+      .brand-mark { width: 38px; height: 38px; }
+      .brand-name { font-size: 1.55rem; }
+      .mobile-nav { height: calc(100dvh - 74px); }
+      .page-hero { padding-top: 54px; }
+      .field-grid, .choice-grid { grid-template-columns: 1fr; }
+      .intake-form { padding: 28px 21px; border-radius: 21px; }
+      .process-panel { border-radius: 21px; }
+      .next-steps { grid-template-columns: 1fr; gap: 20px; }
+      .next-steps li { min-height: 32px; padding: 4px 0 0 47px; }
+      .form-plan { align-items: flex-start; flex-direction: column; }
+      .button { width: 100%; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand" href="index.html" aria-label="Beacon Local home">
+        <img class="brand-mark" src="beacon-local-logo.png" width="48" height="48" alt="">
+        <span class="brand-name">Beacon Local</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Open navigation"
+      >
+        <span class="menu-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+      <input
+        class="search-field"
+        id="site-search"
+        type="search"
+        placeholder="Search pages..."
+        autocomplete="off"
+        aria-label="Search the site"
+      >
+      <div class="mobile-page-links">
+        <a href="index.html" data-search="home overview">Home</a>
+        <a href="services.html" data-search="services packages pricing care">Services</a>
+        <a href="portfolio.html" data-search="portfolio projects work websites">Portfolio</a>
+        <a href="faq.html" data-search="faq questions policies content revisions hosting ownership">FAQ</a>
+        <a href="about.html" data-search="about beacon local team story">About</a>
+        <a href="contact.html" data-search="contact email phone questions">Contact</a>
+      </div>
+      <p class="search-empty" role="status">No matching pages found.</p>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container">
+        <div class="eyebrow">Start the conversation</div>
+        <h1 id="page-title">Tell us about your business.</h1>
+        <p>
+          Share a few details about where your business is today and what you
+          want your website to accomplish. We will use your answers to
+          recommend a clear next step.
+        </p>
+      </div>
+    </section>
+
+    <section class="process-section" aria-labelledby="process-title">
+      <div class="container">
+        <div class="process-panel">
+          <div class="process-head">
+            <div>
+              <div class="eyebrow">A clear first step</div>
+              <h2 id="process-title">No pressure. Just a clear process.</h2>
+            </div>
+            <p>
+              This form helps us understand your project before recommending a
+              package or preparing a quote.
+            </p>
+          </div>
+          <ol class="next-steps">
+            <li>We review your business and website goals.</li>
+            <li>We meet for a complimentary 30-minute discovery call to clarify your goals and explore ideas.</li>
+            <li>You receive a complete scope, detailed project plan, and quote.</li>
+            <li>Once the agreement is signed and deposit is received, your project begins.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <div class="container form-layout">
+        <form class="intake-form" id="intake-form">
+          <div class="form-plan">
+            <span>Your selected package</span>
+            <strong id="selected-plan">Not sure yet</strong>
+          </div>
+
+          <section class="form-block" aria-labelledby="contact-heading">
+            <div class="block-heading">
+              <span class="step">1</span>
+              <h2 id="contact-heading">About you</h2>
+            </div>
+            <div class="field-grid">
+              <div class="field">
+                <label for="name">Your name <span class="required">*</span></label>
+                <input id="name" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="email">Email address <span class="required">*</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" required>
+              </div>
+            </div>
+          </section>
+
+          <section class="form-block" aria-labelledby="business-heading">
+            <div class="block-heading">
+              <span class="step">2</span>
+              <h2 id="business-heading">About your business</h2>
+            </div>
+            <div class="field-grid">
+              <div class="field">
+                <label for="business-name">Business name <span class="required">*</span></label>
+                <input id="business-name" name="business_name" type="text" autocomplete="organization" required>
+              </div>
+              <div class="field">
+                <label for="industry">Type of business <span class="required">*</span></label>
+                <input id="industry" name="industry" type="text" placeholder="Example: Landscaping, photography, consulting" required>
+              </div>
+              <div class="field">
+                <label for="location">City or service area</label>
+                <input id="location" name="location" type="text" placeholder="Where do you serve customers?">
+              </div>
+              <div class="field">
+                <label for="current-site">Current website</label>
+                <input id="current-site" name="current_website" type="url" placeholder="https://">
+              </div>
+              <div class="field full">
+                <label for="business-description">What does your business do? <span class="required">*</span></label>
+                <textarea id="business-description" name="business_description" placeholder="Tell us about your services, customers, and what makes your business different." required></textarea>
+              </div>
+            </div>
+          </section>
+
+          <section class="form-block" aria-labelledby="project-heading">
+            <div class="block-heading">
+              <span class="step">3</span>
+              <h2 id="project-heading">Your website project</h2>
+            </div>
+            <div class="field-grid">
+              <div class="field full">
+                <label for="package">Package you are considering</label>
+                <select id="package" name="package">
+                  <option value="">Not sure yet</option>
+                  <option value="launch">Launch Site — starting at $795</option>
+                  <option value="professional">Professional Site — starting at $1,295</option>
+                  <option value="growth">Growth Site — starting at $1,995</option>
+                </select>
+              </div>
+
+              <fieldset class="field full">
+                <legend>What do you want your website to help you do?</legend>
+                <div class="choice-grid">
+                  <div class="choice">
+                    <input id="goal-find" name="goals" type="checkbox" value="Help customers find the business">
+                    <label for="goal-find">Help customers find us</label>
+                  </div>
+                  <div class="choice">
+                    <input id="goal-leads" name="goals" type="checkbox" value="Generate inquiries or leads">
+                    <label for="goal-leads">Generate inquiries or leads</label>
+                  </div>
+                  <div class="choice">
+                    <input id="goal-credibility" name="goals" type="checkbox" value="Build credibility">
+                    <label for="goal-credibility">Build credibility</label>
+                  </div>
+                  <div class="choice">
+                    <input id="goal-work" name="goals" type="checkbox" value="Showcase services or work">
+                    <label for="goal-work">Showcase services or work</label>
+                  </div>
+                  <div class="choice">
+                    <input id="goal-other" name="goals" type="checkbox" value="Other">
+                    <label for="goal-other">Other</label>
+                  </div>
+                </div>
+                <div class="field conditional-field" id="other-goal-field">
+                  <label for="other-goal">Please specify</label>
+                  <input
+                    id="other-goal"
+                    name="other_goal"
+                    type="text"
+                    placeholder="What else would you like your website to do?"
+                  >
+                </div>
+              </fieldset>
+
+              <div class="field full">
+                <label for="pages">Which pages or features do you think you need?</label>
+                <textarea id="pages" name="pages_and_features" placeholder="Example: Home, Services, About, gallery, contact form, FAQ"></textarea>
+              </div>
+            </div>
+          </section>
+
+          <section class="form-block" aria-labelledby="readiness-heading">
+            <div class="block-heading">
+              <span class="step">4</span>
+              <h2 id="readiness-heading">Content and timing</h2>
+            </div>
+            <div class="field-grid">
+              <fieldset class="field full">
+                <legend>How ready is your content?</legend>
+                <div class="choice-grid">
+                  <div class="choice">
+                    <input id="content-ready" name="content_readiness" type="radio" value="Content and images are ready">
+                    <label for="content-ready">Content and images are ready</label>
+                  </div>
+                  <div class="choice">
+                    <input id="content-some" name="content_readiness" type="radio" value="Some content is ready">
+                    <label for="content-some">Some content is ready</label>
+                  </div>
+                  <div class="choice">
+                    <input id="content-help" name="content_readiness" type="radio" value="Needs copywriting help">
+                    <label for="content-help">I may need copywriting help</label>
+                  </div>
+                  <div class="choice">
+                    <input id="content-unsure" name="content_readiness" type="radio" value="Not sure where to begin">
+                    <label for="content-unsure">I am not sure where to begin</label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <div class="field">
+                <label for="timeline">Preferred launch timing</label>
+                <select id="timeline" name="timeline">
+                  <option value="">No firm deadline</option>
+                  <option value="As soon as reasonably possible">As soon as reasonably possible</option>
+                  <option value="Within one month">Within one month</option>
+                  <option value="Within two to three months">Within two to three months</option>
+                  <option value="More than three months away">More than three months away</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="referral">How did you hear about Beacon Local?</label>
+                <input id="referral" name="referral" type="text">
+              </div>
+              <div class="field full">
+                <label for="notes">Anything else we should know?</label>
+                <textarea id="notes" name="additional_notes" placeholder="Share questions, inspiration, concerns, or details that would help us understand the project."></textarea>
+              </div>
+            </div>
+          </section>
+
+          <div class="form-actions">
+            <button class="button" type="submit">Send Project Details</button>
+            <p class="privacy">
+              Your information will only be used to respond to your project inquiry.
+            </p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div class="confirmation" id="confirmation-dialog" aria-hidden="true">
+    <section
+      class="confirmation-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="confirmation-title"
+    >
+      <div class="confirmation-icon" aria-hidden="true">✓</div>
+      <div class="eyebrow">Thank you</div>
+      <h2 id="confirmation-title">Your project details have been received.</h2>
+      <p>
+        We will review your information and follow up by email shortly with
+        any questions and a clear next step.
+      </p>
+      <button class="button" id="confirmation-close" type="button">Return to the Website</button>
+      <p class="demo-note">
+        Preview only: form delivery must still be connected before launch.
+      </p>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <strong>Beacon Local</strong><br>
+        Making local businesses easier to find.
+      </div>
+      <div>&copy; 2026 Beacon Local. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const mobileMenu = document.querySelector(".mobile-nav");
+    const searchField = document.querySelector(".search-field");
+    const searchLinks = [...document.querySelectorAll(".mobile-page-links a")];
+    const searchEmpty = document.querySelector(".search-empty");
+    const intakeForm = document.querySelector("#intake-form");
+    const packageField = document.querySelector("#package");
+    const selectedPlan = document.querySelector("#selected-plan");
+    const otherGoal = document.querySelector("#goal-other");
+    const otherGoalField = document.querySelector("#other-goal-field");
+    const otherGoalInput = document.querySelector("#other-goal");
+    const confirmationDialog = document.querySelector("#confirmation-dialog");
+    const confirmationClose = document.querySelector("#confirmation-close");
+
+    const packageNames = {
+      launch: "Launch Site",
+      professional: "Professional Site",
+      growth: "Growth Site"
+    };
+
+    function updateSelectedPlan() {
+      selectedPlan.textContent = packageNames[packageField.value] || "Not sure yet";
+    }
+
+    const requestedPackage = new URLSearchParams(window.location.search).get("package");
+    const intakeParameters = new URLSearchParams(window.location.search);
+    if (packageNames[requestedPackage]) {
+      packageField.value = requestedPackage;
+    }
+    const prefilledFields = {
+      name: "#name",
+      email: "#email",
+      business: "#business-name",
+      project: "#business-description"
+    };
+    Object.entries(prefilledFields).forEach(([parameter, selector]) => {
+      const value = intakeParameters.get(parameter);
+      const field = document.querySelector(selector);
+      if (value && field) field.value = value;
+    });
+    updateSelectedPlan();
+    packageField.addEventListener("change", updateSelectedPlan);
+
+    function updateOtherGoal() {
+      const isSelected = otherGoal.checked;
+      otherGoalField.classList.toggle("is-visible", isSelected);
+      otherGoalInput.required = isSelected;
+      if (!isSelected) otherGoalInput.value = "";
+    }
+
+    otherGoal.addEventListener("change", updateOtherGoal);
+    updateOtherGoal();
+
+    function openConfirmation() {
+      confirmationDialog.classList.add("is-open");
+      confirmationDialog.setAttribute("aria-hidden", "false");
+      document.body.classList.add("dialog-open");
+      confirmationClose.focus();
+    }
+
+    function closeConfirmation() {
+      confirmationDialog.classList.remove("is-open");
+      confirmationDialog.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("dialog-open");
+      window.location.href = "index.html";
+    }
+
+    intakeForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!intakeForm.reportValidity()) return;
+      openConfirmation();
+    });
+
+    confirmationClose.addEventListener("click", closeConfirmation);
+
+    function resetSearch() {
+      searchField.value = "";
+      searchLinks.forEach((link) => {
+        link.hidden = false;
+      });
+      searchEmpty.classList.remove("is-visible");
+    }
+
+    function closeMenu() {
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Open navigation");
+      mobileMenu.classList.remove("is-open");
+      mobileMenu.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("menu-open");
+      resetSearch();
+    }
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Open navigation" : "Close navigation");
+      mobileMenu.classList.toggle("is-open", !isOpen);
+      mobileMenu.setAttribute("aria-hidden", String(isOpen));
+      document.body.classList.toggle("menu-open", !isOpen);
+    });
+
+    searchField.addEventListener("input", () => {
+      const query = searchField.value.trim().toLowerCase();
+      let matches = 0;
+      searchLinks.forEach((link) => {
+        const text = `${link.textContent} ${link.dataset.search}`.toLowerCase();
+        const match = !query || text.includes(query);
+        link.hidden = !match;
+        if (match) matches += 1;
+      });
+      searchEmpty.classList.toggle("is-visible", matches === 0);
+    });
+
+    searchLinks.forEach((link) => link.addEventListener("click", closeMenu));
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 980) closeMenu();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        if (confirmationDialog.classList.contains("is-open")) {
+          closeConfirmation();
+          return;
+        }
+        closeMenu();
+        menuButton.focus();
+      }
+    });
+    closeMenu();
+  </script>
+</body>
+</html>
