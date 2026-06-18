@@ -52,10 +52,11 @@
       justify-content: space-between;
       gap: 24px;
     }
-    .brand { display: inline-flex; align-items: center; gap: 12px; }
-    .brand img {
+    .brand { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .brand-mark {
       width: 48px;
       height: 48px;
+      flex: 0 0 auto;
       object-fit: contain;
       mix-blend-mode: multiply;
     }
@@ -296,7 +297,7 @@
     @media (max-width: 760px) {
       .container { width: min(100% - 30px, 1120px); }
       .nav-bar { min-height: 74px; }
-      .brand img { width: 38px; height: 38px; }
+      .brand-mark { width: 38px; height: 38px; }
       .brand-name { font-size: 1.55rem; }
       .mobile-nav { height: calc(100dvh - 74px); }
       .portfolio-grid { grid-template-columns: 1fr; }
@@ -309,7 +310,13 @@
   <header class="site-header">
     <div class="container nav-bar">
       <a class="brand" href="index.html" aria-label="Beacon Local home">
-        <img src="beacon-local-logo.png" width="48" height="48" alt="">
+        <img
+          class="brand-mark"
+          src="beacon-local-logo.png"
+          width="48"
+          height="48"
+          alt=""
+        >
         <span class="brand-name">Beacon Local</span>
       </a>
       <nav class="desktop-nav" aria-label="Main navigation">
